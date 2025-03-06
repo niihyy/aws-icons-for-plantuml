@@ -1,0 +1,74 @@
+@startuml
+
+class User {
+    +id: int
+    +name: string
+    +email: string
+    +password: string
+    +register()
+    +login()
+    +comment()
+}
+
+class Post {
+    +id: int
+    +title: string
+    +summary: text
+    +body: text
+    +view_count: int
+    +status: string
+    +published_at: datetime
+    +create()
+    +edit()
+    +delete()
+    +view()
+}
+
+class Category {
+    +id: int
+    +name: string
+    +add()
+    +edit()
+    +delete()
+}
+
+class Comment {
+    +id: int
+    +user_id: int
+    +post_id: int
+    +content: text
+    +created_at: datetime
+    +add()
+    +delete()
+}
+
+class Menu {
+    +id: int
+    +name: string
+    +url: string
+    +add()
+    +edit()
+    +delete()
+}
+
+class Banner {
+    +id: int
+    +image: string
+    +url: string
+    +upload()
+    +remove()
+}
+
+class WebSetting {
+    +id: int
+    +setting_name: string
+    +setting_value: string
+    +update()
+}
+
+User "1" -- "*" Post
+User "1" -- "*" Comment
+Post "1" -- "*" Comment
+Post "*" -- "1" Category
+
+@enduml
